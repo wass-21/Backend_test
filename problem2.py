@@ -9,16 +9,16 @@ def propabilityToBeatBoss(suit,animal,fruit):
     fruits = ['apple','bananas','mango','watermelon','papaya']
 
     if suit.strip().lower() not in suit_cards:
-         return "Wrong Suid Card"
+         raise Exception("Wrong Suid Card")
     if animal.strip().lower() not in animals:
-         return "Wrong Animal name"
+         raise Exception("Wrong Animal name")
     if fruit.strip().lower() not in fruits:
-         return "Wrong Fruid name"
+         raise Exception("Wrong Fruid name")
 
     with open("Files\\prediction.csv", mode = 'r') as f: # using 2 \\ to avoid syntaxWarning
             csvFile = csv.DictReader(f) # for access the content as a dictionary
             for lines in csvFile:
-                win = lines['Result'].strip().lower() == 'true'
+                win = lines['Result'].strip().lower() == 'true' 
                 #check each characteristic , how many time appears and if win or no 
                 if lines['Card Suit'] == suit : 
                     suit_total += 1
@@ -35,7 +35,7 @@ def propabilityToBeatBoss(suit,animal,fruit):
                     if win:
                          fruit_win += 1
             
-            #calculate the percentage for each one + check that suit_total is not 0 (we don't want to divide by 0)
+            #calculate the percentage for each one + check that the total is not null (we don't want to divide by 0)
 
             p_suit = (suit_win / suit_total)*100 if suit_total else 0
             p_animal = (animal_win / animal_total)*100 if animal_total else 0
