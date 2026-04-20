@@ -45,4 +45,4 @@ def propabilityToBeatBoss(suit,animal,fruit):
     return (p_suit + p_animal + p_fruit) / 3
 
 
-print(propabilityToBeatBoss("Hearts","Lion","Mango"))
+print(propabilityToBeatBoss("Hearts","","Mango"))

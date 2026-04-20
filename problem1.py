@@ -18,4 +18,4 @@ def multiple_number(n):
     return x
 
 
-print(multiple_number(-5))
+print(multiple_number(25))
